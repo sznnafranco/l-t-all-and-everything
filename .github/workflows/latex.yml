@@ -19,12 +19,17 @@ jobs:
       - name: Set up TeX Live (LaTeX)
         uses: actions/setup-tex@v1
         with:
-          texlive-packages: "texlive-latex-base texlive-latex-recommended texlive-latex-extra"
+          texlive-packages: "texlive-latex-base texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-fonts-extra"
 
-      - name: Compile LaTeX to HTML using Pandoc
+      - name: Install latex2html
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y latex2html
+
+      - name: Compile LaTeX to HTML using latex2html
         run: |
           mkdir -p output
-          pandoc chaps.tex -s -o output/index.html
+          latex2html -dir=output chaps.tex  # This converts the LaTeX file to HTML
 
       - name: Set up Git for gh-pages
         run: |
@@ -46,4 +51,3 @@ jobs:
           personal_token: ${{ secrets.GITHUB_TOKEN }}
           branch: gh-pages
           folder: .  # This pushes everything to the root of the gh-pages branch
-

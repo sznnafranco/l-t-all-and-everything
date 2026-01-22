@@ -22,16 +22,12 @@ jobs:
       - name: Install TeX Live and latex2html
         run: |
           sudo apt-get update
-          sudo apt-get install -y latex2html
+          sudo apt-get install -y texlive texlive-latex-extra texlive-fonts-recommended texlive-fonts-extra latex2html
 
       - name: Compile LaTeX to HTML using latex2html
         run: |
           mkdir -p output
           latex2html -dir=output chaps.tex  # This converts the LaTeX file to HTML
-
-      - name: List files in output directory
-        run: ls -R output  # This will list all files in the output folder
-
 
       - name: Set up Git for gh-pages
         run: |
@@ -50,6 +46,7 @@ jobs:
       - name: Publish HTML to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          personal_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: gh-pages
-          folder: .  # This pushes everything to the root of the gh-pages branch
+          github_token: ${{ secrets.GITHUB_TOKEN }}  # Corrected input
+          publish_branch: gh-pages  # Corrected input
+          publish_dir: .  # Corrected input
+          disable_nojekyll: true  # Ensure `.nojekyll` is removed for proper processing

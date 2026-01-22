@@ -23,7 +23,7 @@ jobs:
 
       - name: Convert LaTeX to HTML using Pandoc
         run: |
-          pandoc main.tex -s -o output/index.html
+          pandoc chaps.tex -s -o output/index.html
 
       - name: Publish HTML to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3

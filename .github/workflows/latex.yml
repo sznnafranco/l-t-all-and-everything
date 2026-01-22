@@ -3,10 +3,10 @@ name: LaTeX Build and Publish
 on:
   push:
     branches:
-      - l-t-all-and-everything
+      - l-t-all-and-everything  # Use the same branch name as your repo
   pull_request:
     branches:
-      - l-t-all-and-everything
+      - l-t-all-and-everything  # Use the same branch name as your repo
 
 jobs:
   build:
@@ -17,14 +17,14 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Set up TeX Live (LaTeX)
-        uses: actions/setup-tex@v1
-        with:
-          texlive-packages: "texlive-latex-base texlive-latex-recommended texlive-latex-extra"
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y texlive-full  # Installs the full TeX Live distribution
 
       - name: Compile LaTeX to HTML using Pandoc
         run: |
           mkdir -p output
-          pandoc chaps.tex -s -o output/index.html
+          pandoc chaps.tex -s -o output/index.html  # Ensure the LaTeX file is correct
 
       - name: Set up Git for gh-pages
         run: |
@@ -46,4 +46,3 @@ jobs:
           personal_token: ${{ secrets.GITHUB_TOKEN }}
           branch: gh-pages
           folder: .  # This pushes everything to the root of the gh-pages branch
-

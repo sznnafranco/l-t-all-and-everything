@@ -22,7 +22,8 @@ jobs:
       - name: Install TeX Live and latex2html
         run: |
           sudo apt-get update
-          sudo apt-get install -y texlive texlive-latex-extra texlive-fonts-recommended texlive-fonts-extra latex2html texlive-pdfpages  # Install pdfpages
+          sudo apt-get install -y texlive texlive-latex-extra texlive-fonts-recommended texlive-fonts-extra latex2html  # texlive-latex-extra should have pdfpages
+
 
       - name: Compile LaTeX to HTML using latex2html
         run: |

@@ -12,6 +12,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: write  # Explicitly allow push to repository
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2

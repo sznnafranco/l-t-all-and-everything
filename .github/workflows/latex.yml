@@ -22,8 +22,7 @@ jobs:
       - name: Install TeX Live and latex2html
         run: |
           sudo apt-get update
-          sudo apt-get install -y texlive texlive-latex-extra texlive-fonts-recommended texlive-fonts-extra latex2html  # texlive-latex-extra should have pdfpages
-
+          sudo apt-get install -y texlive texlive-latex-extra texlive-fonts-recommended texlive-fonts-extra latex2html  # Install pdfpages
 
       - name: Compile LaTeX to HTML using latex2html
         run: |
@@ -39,7 +38,7 @@ jobs:
         run: |
           git checkout --orphan gh-pages
           git rm -rf .
-          cp -r output/* .
+          cp -r output/* .  # Copy HTML files to the root of gh-pages branch
           git add .
           git commit -m "Deploy HTML output"
           git push --force --set-upstream origin gh-pages
@@ -51,3 +50,4 @@ jobs:
           publish_branch: gh-pages  # Corrected input
           publish_dir: .  # Corrected input
           disable_nojekyll: true  # Ensure `.nojekyll` is removed for proper processing
+

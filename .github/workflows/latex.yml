@@ -16,15 +16,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Set up TeX Live (LaTeX)
-        uses: actions/setup-tex@v1
-        with:
-          texlive-packages: "texlive-latex-base texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-fonts-extra"
-
-      - name: Install latex2html
+      - name: Install TeX Live and latex2html
         run: |
           sudo apt-get update
-          sudo apt-get install -y latex2html
+          sudo apt-get install -y texlive texlive-latex-extra texlive-fonts-recommended texlive-fonts-extra latex2html
 
       - name: Compile LaTeX to HTML using latex2html
         run: |

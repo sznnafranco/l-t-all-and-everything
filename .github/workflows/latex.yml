@@ -22,12 +22,16 @@ jobs:
       - name: Install TeX Live and latex2html
         run: |
           sudo apt-get update
-          sudo apt-get install -y texlive texlive-latex-extra texlive-fonts-recommended texlive-fonts-extra latex2html
+          sudo apt-get install -y latex2html
 
       - name: Compile LaTeX to HTML using latex2html
         run: |
           mkdir -p output
           latex2html -dir=output chaps.tex  # This converts the LaTeX file to HTML
+
+      - name: List files in output directory
+        run: ls -R output  # This will list all files in the output folder
+
 
       - name: Set up Git for gh-pages
         run: |

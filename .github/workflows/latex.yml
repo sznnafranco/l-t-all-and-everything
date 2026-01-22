@@ -1,0 +1,33 @@
+name: LaTeX to HTML Build and Publish
+
+on:
+  push:
+    branches:
+      - l-t-all-and-everything
+  pull_request:
+    branches:
+      - l-t-all-and-everything
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up TeX Live (LaTeX)
+        uses: actions/setup-tex@v1
+        with:
+          texlive-packages: "texlive-latex-base texlive-latex-recommended texlive-latex-extra"
+
+      - name: Convert LaTeX to HTML using Pandoc
+        run: |
+          pandoc main.tex -s -o output/index.html
+
+      - name: Publish HTML to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          personal_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: gh-pages
+          folder: output # The folder where HTML files are saved

@@ -22,12 +22,18 @@ jobs:
       - name: Install TeX Live and latex2html
         run: |
           sudo apt-get update
-          sudo apt-get install -y texlive texlive-latex-extra texlive-fonts-recommended texlive-fonts-extra latex2html  # Install pdfpages
+          sudo apt-get install -y texlive texlive-latex-extra texlive-fonts-recommended texlive-fonts-extra latex2html  # Install pdflatex and latex2html
 
       - name: Compile LaTeX to HTML using latex2html
         run: |
           mkdir -p output
           latex2html -dir=output chaps.tex  # This converts the LaTeX file to HTML
+
+      - name: Compile LaTeX to PDF using pdflatex
+        run: |
+          pdflatex chaps.tex
+          pdflatex chaps.tex  # Run twice to ensure TOC and references are correct
+          mv chaps.pdf output/chaps.pdf  # Move the generated PDF to the output folder
 
       - name: Set up Git for gh-pages
         run: |
@@ -38,16 +44,15 @@ jobs:
         run: |
           git checkout --orphan gh-pages
           git rm -rf .
-          cp -r output/* .  # Copy HTML files to the root of gh-pages branch
+          cp -r output/* .  # Copy HTML and PDF files to the root of gh-pages branch
           git add .
-          git commit -m "Deploy HTML output"
+          git commit -m "Deploy HTML and PDF output"
           git push --force --set-upstream origin gh-pages
 
-      - name: Publish HTML to GitHub Pages
+      - name: Publish HTML and PDF to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}  # Corrected input
           publish_branch: gh-pages  # Corrected input
           publish_dir: .  # Corrected input
           disable_nojekyll: true  # Ensure `.nojekyll` is removed for proper processing
-

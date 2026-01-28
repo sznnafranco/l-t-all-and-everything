@@ -10,16 +10,16 @@
 \contentsline {section}{\numberline {7.3}Emotional Games}{35}{}%
 \contentsline {section}{\numberline {7.4}Learned Games}{35}{}%
 \contentsline {section}{\numberline {7.5}Born Games}{36}{}%
-\contentsline {section}{\numberline {7.6}Sexual Energy Games}{36}{}%
-\contentsline {section}{\numberline {7.7}Miscellaneous Games}{36}{}%
-\contentsline {section}{\numberline {7.8}Song Games}{36}{}%
-\contentsline {chapter}{\numberline {8}Sayings}{39}{}%
-\contentsline {chapter}{\numberline {9}Crystal Vision}{43}{}%
-\contentsline {chapter}{\numberline {10}The Perfect Diet aka Anti SAD Food Diet}{45}{}%
-\contentsline {chapter}{\numberline {11}Skin the Largest Organ in the Body and the Immune system}{47}{}%
-\contentsline {chapter}{\numberline {12}Exercise}{51}{}%
-\contentsline {chapter}{\numberline {13}Doctor Doctor }{53}{}%
-\contentsline {chapter}{\numberline {14}Odds and Ends}{55}{}%
-\contentsline {chapter}{\numberline {15}Prayer}{57}{}%
-\contentsline {chapter}{\numberline {16}Purgatory - Conscience, Understanding, Helping Others}{61}{}%
-\contentsline {chapter}{\numberline {17}}{63}{}%
+\contentsline {section}{\numberline {7.6}Sexual Energy Games}{38}{}%
+\contentsline {section}{\numberline {7.7}Miscellaneous Games}{38}{}%
+\contentsline {section}{\numberline {7.8}Song Games}{38}{}%
+\contentsline {chapter}{\numberline {8}Sayings}{41}{}%
+\contentsline {chapter}{\numberline {9}Crystal Vision}{45}{}%
+\contentsline {chapter}{\numberline {10}The Perfect Diet aka Anti SAD Food Diet}{47}{}%
+\contentsline {chapter}{\numberline {11}Skin the Largest Organ in the Body and the Immune system}{49}{}%
+\contentsline {chapter}{\numberline {12}Exercise}{53}{}%
+\contentsline {chapter}{\numberline {13}Doctor Doctor }{55}{}%
+\contentsline {chapter}{\numberline {14}Odds and Ends}{57}{}%
+\contentsline {chapter}{\numberline {15}Prayer}{59}{}%
+\contentsline {chapter}{\numberline {16}Purgatory - Conscience, Understanding, Helping Others}{63}{}%
+\contentsline {chapter}{\numberline {17}}{65}{}%

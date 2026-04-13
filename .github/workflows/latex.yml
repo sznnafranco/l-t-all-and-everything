@@ -6,7 +6,7 @@ on:
       - l-t-all-and-everything
   pull_request:
     branches:
-      - l-t-all-and-everything
+      - master
 
 jobs:
   build:

@@ -28,12 +28,7 @@ jobs:
         run: |
           mkdir -p output
           latex2html -dir=output chaps.tex  # This converts the LaTeX file to HTML
-          # Copy source pdfs so the html links work
-          cp cards-emental-physical.pdf output/
-          cp cards-spiritual.pdf output/
-          cp four-story.pdf output/
-          cp games.pdf output/
-          cp three-story.pdf output/
+
       - name: Compile LaTeX to PDF using pdflatex
         run: |
           pdflatex chaps.tex

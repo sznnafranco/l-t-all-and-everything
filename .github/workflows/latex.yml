@@ -3,7 +3,8 @@ name: LaTeX Build and Publish
 on:
   push:
     branches:
-      - l-t-all-and-everything
+      - master
+
   pull_request:
     branches:
       - master

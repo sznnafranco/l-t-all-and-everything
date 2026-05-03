@@ -1,0 +1,11 @@
+auto/
+index.html
+index.html.bk
+
+# LaTeX compilation junk
+chaps.aux
+chaps.log
+chaps.toc
+
+.*.swp
+

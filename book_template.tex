@@ -1,0 +1,44 @@
+\documentclass[12pt,letterpaper]{book}
+\usepackage{pdfpages}
+\usepackage{comment}
+\newenvironment{latexonly}{}{}
+\excludecomment{htmlonly}
+\begin{document}
+\includepdf[pages=1]{games.pdf}
+
+\copyright\ 2025-2026 As yet unnamed and unformed charitable organization to mitigate and stop hunger and malnutrition, and other cool things. All rights reserved.
+
+\tableofcontents
+
+\chapter{}
+
+\begin{htmlonly}
+This paragraph or code will only appear in the HTML version.
+\end{htmlonly}
+
+\includepdf[pages=1]{three-story.pdf}
+\includepdf[pages=1]{cards-emental-physical.pdf}
+\includepdf[pages=1]{cards-spiritual.pdf}
+\includepdf[pages=1]{four-story.pdf}
+
+\begin{htmlonly}
+\noindent
+<a href="games.pdf" target="_blank">Download games.pdf</a><br>
+<iframe src="games.pdf" width="600" height="400" style="border:none;">
+  Your browser does not support inline PDFs. Please download the PDF: <a href="games.pdf">Download PDF</a>.
+</iframe>
+
+<a href="three-story.pdf" target="_blank">Download three-story.pdf</a><br>
+<iframe src="three-story.pdf" width="600" height="400" style="border:none;"></iframe>
+
+<a href="cards-emental-physical.pdf" target="_blank">Download cards-emental-physical.pdf</a><br>
+<iframe src="cards-emental-physical.pdf" width="600" height="400" style="border:none;"></iframe>
+
+<a href="cards-spiritual.pdf" target="_blank">Download cards-spiritual.pdf</a><br>
+<iframe src="cards-spiritual.pdf" width="600" height="400" style="border:none;"></iframe>
+
+<a href="four-story.pdf" target="_blank">Download four-story.pdf</a><br>
+<iframe src="four-story.pdf" width="600" height="400" style="border:none;"></iframe>
+\end{htmlonly}
+
+\end{document}

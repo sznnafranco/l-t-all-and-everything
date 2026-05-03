@@ -1,4 +1,4 @@
-name: LaTeX Build and Publish
+name: LaTeX Build and Publish (PDF + HTML)
 
 on:
   push:
@@ -9,50 +9,78 @@ on:
       - l-t-all-and-everything
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     permissions:
-      contents: write  # Explicitly allow push to repository
+      contents: write  # Needed to push to gh-pages
+
+    env:
+#      BOOKS: "book1:book1.tex book2:book2.tex"  # Define your books here
+      BOOKS: "chaps:chaps.tex book_template:book_template.tex"  # Define your books here
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
-      - name: Install TeX Live and latex2html
+      - name: Cache TeX Live installation
+        id: cache-texlive
+        uses: actions/cache@v3
+        with:
+          path: /var/lib/texlive
+          key: texlive-${{ runner.os }}-${{ hashFiles('**/*.tex') }}
+          restore-keys: texlive-${{ runner.os }}-
+
+      - name: Install TeX Live and dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y texlive texlive-latex-extra texlive-fonts-recommended texlive-fonts-extra latex2html  # Install pdflatex and latex2html
+          sudo apt-get install -y \
+            texlive texlive-latex-extra \
+            texlive-fonts-recommended texlive-fonts-extra \
+            latex2html  # For HTML
+          # Optional: Install additional engines (e.g., xelatex/lualatex)
+          # sudo apt-get install -y texlive-xetex texlive-luatex
 
-      - name: Compile LaTeX to HTML using latex2html
+      - name: Compile changed books (PDF + HTML)
         run: |
+          # Fetch changes for comparison (skip if first push)
+          if [ -z "${{ github.event.before }}" ]; then
+            echo "⚠️ First push to branch, compiling all books..."
+            COMPILE_ALL=true
+          else
+            git fetch --shallow-since=$(git log -1 --format=%ct) ${{ github.event.before }} || true
+          fi
+
           mkdir -p output
-          latex2html -dir=output chaps.tex  # This converts the LaTeX file to HTML
+          for book in $BOOKS; do
+            IFS=':' read -r name file <<< "$book"
+            
+            # Skip if no changes detected (unless first push)
+            if [ "$COMPILE_ALL" != "true" ] && \
+               ! git diff --name-only ${{ github.event.before }} HEAD -- "$file" | grep -q .; then
+              echo "⏭️ No changes for $name, skipping"
+              continue
+            fi
 
-      - name: Compile LaTeX to PDF using pdflatex
-        run: |
-          pdflatex chaps.tex
-          pdflatex chaps.tex  # Run twice to ensure TOC and references are correct
-          mv chaps.pdf output/chaps.pdf  # Move the generated PDF to the output folder
+            echo "✅ Processing $name (file: $file)"
 
-      - name: Set up Git for gh-pages
-        run: |
-          git config --global user.name "GitHub Actions"
-          git config --global user.email "actions@github.com"
+            # Compile to PDF
+            pdflatex -interaction=nonstopmode -output-directory=output "$file"
+            # Run twice to resolve references (e.g., TOC, citations)
+            pdflatex -interaction=nonstopmode -output-directory=output "$file"
+            
+            # Compile to HTML
+            mkdir -p "output/$name"
+            latex2html -dir="output/$name" "$file"
+          done
 
-      - name: Create gh-pages branch and push output
-        run: |
-          git checkout --orphan gh-pages
-          git rm -rf .
-          cp -r output/* .  # Copy HTML and PDF files to the root of gh-pages branch
-          git add .
-          git commit -m "Deploy HTML and PDF output"
-          git push --force --set-upstream origin gh-pages
+          # Cleanup temporary LaTeX files
+          rm -f output/*.aux output/*.log output/*.out
 
-      - name: Publish HTML and PDF to GitHub Pages
+      - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}  # Corrected input
-          publish_branch: gh-pages  # Corrected input
-          publish_dir: .  # Corrected input
-          disable_nojekyll: true  # Ensure `.nojekyll` is removed for proper processing
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: ./output  # Publishes both PDF and HTML
+          disable_nojekyll: true

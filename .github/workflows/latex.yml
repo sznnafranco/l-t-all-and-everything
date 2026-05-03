@@ -1,16 +1,23 @@
-name: Simple Node.js 24 Test and Book Build
+name: Build Multiple LaTeX Books with Node.js 24
 
 on:
   push:
     branches:
-      - l-t-all-and-everything  # or your branch name
-#     - main                    # if needed
+      - l-t-all-and-everything  # Change to your branch name if needed
+      # - main
 
 jobs:
-  test-node-and-build-book:
+  build:
     runs-on: ubuntu-latest
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+    strategy:
+      matrix:
+        book:
+          - chaps
+          - book_template
+          # Add more books here
 
     steps:
       - name: Checkout code
@@ -24,23 +31,24 @@ jobs:
       - name: Verify Node.js version
         run: node -v
 
-      - name: Run a simple Node.js script
-        run: node your_script.js
+      # Optional: Run custom scripts per book using Node.js if needed
+      # - name: Run script for ${{ matrix.book }}
+      #   run: node scripts/build-${{ matrix.book }}.js
 
       - name: Install LaTeX
         run: |
           sudo apt-get update -y
           sudo apt-get install -y texlive-full
 
-      - name: Run LaTeX and convert to HTML
+      - name: Compile LaTeX for ${{ matrix.book }}
         run: |
-          pdflatex -interaction=nonstopmode chaps.tex
-          pdflatex -interaction=nonstopmode book_template.tex
-          pdflatex -interaction=nonstopmode chaps.tex
-          pdflatex -interaction=nonstopmode book_template.tex
+          pdflatex -interaction=nonstopmode ${{ matrix.book }}.tex
+          pdflatex -interaction=nonstopmode ${{ matrix.book }}.tex
 
-      - name: Upload files to GitHub Pages
+      - name: Upload PDF to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./out
+          publish_dir: ./  # Adjust if PDFs are in a specific directory
+          # Optional: specify directory if PDFs are stored elsewhere
+          # publish_dir: ./output-${{ matrix.book }}

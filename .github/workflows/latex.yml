@@ -3,7 +3,7 @@ name: Simple Node.js 24 Test
 on:
   push:
     branches:
-      - main  # or your branch name
+      - l-t-all-and-everything  # or your branch name
 
 jobs:
   test-node:

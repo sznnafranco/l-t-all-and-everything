@@ -1,0 +1,43 @@
+.PHONY: pdf html all clean check
+
+BOOKS = chaps book1 book2  # Add your book filenames here without .tex
+
+OUTPUT_DIR = output
+DOWNLOADS_DIR = ~/Downloads
+
+all: pdf html check
+
+pdf: $(BOOKS:%=%.pdf)
+
+html: $(BOOKS:%=%.html)
+
+# Build PDF for a book
+%.pdf: %.tex
+    latexmk -pdf $<
+    mkdir -p $(OUTPUT_DIR)
+    mv $*.pdf $(OUTPUT_DIR)/
+    cp $(OUTPUT_DIR)/$*.pdf $(DOWNLOADS_DIR)/
+
+# Build HTML for a book
+%.html: %.tex
+    mkdir -p $(OUTPUT_DIR)
+    latex2html -no_math -html_version 4.0 -dir=$(OUTPUT_DIR) $<
+    # latex2html generates folder named after tex file (without .tex)
+    cp -r $(OUTPUT_DIR)/$* $(DOWNLOADS_DIR)/
+
+# Syntax check using latexmk (no output produced)
+check:
+    @for book in $(BOOKS); do \
+        echo "Checking syntax for $$book.tex"; \
+        latexmk -pdf -f -silent -quiet -interaction=nonstopmode -jobname=check_$$book $$book.tex > /dev/null 2>&1; \
+        if [ $$? -ne 0 ]; then \
+            echo "Syntax errors found in $$book.tex"; exit 1; \
+        else \
+            echo "$$book.tex syntax OK"; \
+        fi \
+    done
+
+clean:
+    latexmk -C
+    rm -rf $(OUTPUT_DIR)
+    rm -f *.css *.pl

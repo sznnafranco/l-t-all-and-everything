@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - l-t-all-and-everything  # or your branch name
+#     - main                    # if needed
 
 jobs:
   test-node:

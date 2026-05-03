@@ -1,86 +1,27 @@
-name: LaTeX Build and Publish (PDF + HTML)
+name: Simple Node.js 24 Test
 
 on:
   push:
     branches:
-      - l-t-all-and-everything
-  pull_request:
-    branches:
-      - l-t-all-and-everything
+      - main  # or your branch name
 
 jobs:
-  build-and-deploy:
+  test-node:
     runs-on: ubuntu-latest
 
-    permissions:
-      contents: write  # Needed to push to gh-pages
-
-    env:
-#      BOOKS: "book1:book1.tex book2:book2.tex"  # Define your books here
-      BOOKS: "chaps:chaps.tex book_template:book_template.tex"  # Define your books here
-
     steps:
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Cache TeX Live installation
-        id: cache-texlive
-        uses: actions/cache@v3
+      - name: Set up Node.js 24
+        uses: actions/setup-node@v3
         with:
-          path: /var/lib/texlive
-          key: texlive-${{ runner.os }}-${{ hashFiles('**/*.tex') }}
-          restore-keys: texlive-${{ runner.os }}-
+          node-version: '24'
 
-      - name: Install TeX Live and dependencies
+      - name: Verify Node.js version
+        run: node -v
+
+      - name: Run a simple Node.js script
         run: |
-          sudo apt-get update
-          sudo apt-get install -y \
-            texlive texlive-latex-extra \
-            texlive-fonts-recommended texlive-fonts-extra \
-            latex2html  # For HTML
-          # Optional: Install additional engines (e.g., xelatex/lualatex)
-          # sudo apt-get install -y texlive-xetex texlive-luatex
-
-      - name: Compile changed books (PDF + HTML)
-        run: |
-          # Fetch changes for comparison (skip if first push)
-          if [ -z "${{ github.event.before }}" ]; then
-            echo "⚠️ First push to branch, compiling all books..."
-            COMPILE_ALL=true
-          else
-            git fetch --shallow-since=$(git log -1 --format=%ct) ${{ github.event.before }} || true
-          fi
-
-          mkdir -p output
-          for book in $BOOKS; do
-            IFS=':' read -r name file <<< "$book"
-            
-            # Skip if no changes detected (unless first push)
-            if [ "$COMPILE_ALL" != "true" ] && \
-               ! git diff --name-only ${{ github.event.before }} HEAD -- "$file" | grep -q .; then
-              echo "⏭️ No changes for $name, skipping"
-              continue
-            fi
-
-            echo "✅ Processing $name (file: $file)"
-
-            # Compile to PDF
-            pdflatex -interaction=nonstopmode -output-directory=output "$file"
-            # Run twice to resolve references (e.g., TOC, citations)
-            pdflatex -interaction=nonstopmode -output-directory=output "$file"
-            
-            # Compile to HTML
-            mkdir -p "output/$name"
-            latex2html -dir="output/$name" "$file"
-          done
-
-          # Cleanup temporary LaTeX files
-          rm -f output/*.aux output/*.log output/*.out
-
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: gh-pages
-          publish_dir: ./output  # Publishes both PDF and HTML
-          disable_nojekyll: true
+          node -e "console.log('Hello from Node.js', process.version)"
+	  

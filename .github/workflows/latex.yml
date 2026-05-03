@@ -1,4 +1,4 @@
-name: Simple Node.js 24 Test
+name: Simple Node.js 24 Test and Book Build
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
 #     - main                    # if needed
 
 jobs:
-  test-node:
+  test-node-and-build-book:
     runs-on: ubuntu-latest
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
@@ -25,5 +25,22 @@ jobs:
         run: node -v
 
       - name: Run a simple Node.js script
+        run: node your_script.js
+
+      - name: Install LaTeX
         run: |
-          node -e "console.log('Hello from Node.js', process.version)"
+          sudo apt-get update -y
+          sudo apt-get install -y texlive-full
+
+      - name: Run LaTeX and convert to HTML
+        run: |
+          pdflatex -interaction=nonstopmode chaps.tex
+          pdflatex -interaction=nonstopmode book_template.tex
+          pdflatex -interaction=nonstopmode chaps.tex
+          pdflatex -interaction=nonstopmode book_template.tex
+
+      - name: Upload files to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./out

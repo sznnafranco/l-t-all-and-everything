@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2025/dev/Debian) (preloaded format=pdflatex 2026.4.12)  14 APR 2026 15:44
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2025/dev/Debian) (preloaded format=pdflatex 2026.5.3)  4 MAY 2026 03:21
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -259,33 +259,33 @@ Chapter 4.
 <three-story.pdf, id=52, 614.295pt x 794.97pt>
 File: three-story.pdf Graphic file (type pdf)
 <use three-story.pdf>
-Package pdftex.def Info: three-story.pdf  used on input line 66.
+Package pdftex.def Info: three-story.pdf  used on input line 69.
 (pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
 <three-story.pdf, id=54, page=1, 614.295pt x 794.97pt>
 File: three-story.pdf Graphic file (type pdf)
 <use three-story.pdf, page 1>
-Package pdftex.def Info: three-story.pdf , page1 used on input line 66.
+Package pdftex.def Info: three-story.pdf , page1 used on input line 69.
 (pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
 File: three-story.pdf Graphic file (type pdf)
 <use three-story.pdf, page 1>
-Package pdftex.def Info: three-story.pdf , page1 used on input line 66.
+Package pdftex.def Info: three-story.pdf , page1 used on input line 69.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 
 
 [12]
 File: three-story.pdf Graphic file (type pdf)
 <use three-story.pdf, page 1>
-Package pdftex.def Info: three-story.pdf , page1 used on input line 66.
+Package pdftex.def Info: three-story.pdf , page1 used on input line 69.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 File: three-story.pdf Graphic file (type pdf)
 <use three-story.pdf, page 1>
-Package pdftex.def Info: three-story.pdf , page1 used on input line 66.
+Package pdftex.def Info: three-story.pdf , page1 used on input line 69.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 
 
 File: three-story.pdf Graphic file (type pdf)
 <use three-story.pdf, page 1>
-Package pdftex.def Info: three-story.pdf , page1 used on input line 66.
+Package pdftex.def Info: three-story.pdf , page1 used on input line 69.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 [13
 
@@ -293,35 +293,35 @@ Package pdftex.def Info: three-story.pdf , page1 used on input line 66.
 <cards-emental-physical.pdf, id=76, 794.97pt x 614.295pt>
 File: cards-emental-physical.pdf Graphic file (type pdf)
 <use cards-emental-physical.pdf>
-Package pdftex.def Info: cards-emental-physical.pdf  used on input line 67.
+Package pdftex.def Info: cards-emental-physical.pdf  used on input line 70.
 (pdftex.def)             Requested size: 794.96806pt x 614.29349pt.
 <cards-emental-physical.pdf, id=78, page=1, 794.97pt x 614.295pt>
 File: cards-emental-physical.pdf Graphic file (type pdf)
 <use cards-emental-physical.pdf, page 1>
 Package pdftex.def Info: cards-emental-physical.pdf , page1 used on input line 
-67.
+70.
 (pdftex.def)             Requested size: 794.96806pt x 614.29349pt.
 File: cards-emental-physical.pdf Graphic file (type pdf)
 <use cards-emental-physical.pdf, page 1>
 Package pdftex.def Info: cards-emental-physical.pdf , page1 used on input line 
-67.
+70.
 (pdftex.def)             Requested size: 615.04005pt x 475.25821pt.
 File: cards-emental-physical.pdf Graphic file (type pdf)
 <use cards-emental-physical.pdf, page 1>
 Package pdftex.def Info: cards-emental-physical.pdf , page1 used on input line 
-67.
+70.
 (pdftex.def)             Requested size: 615.04005pt x 475.25821pt.
 File: cards-emental-physical.pdf Graphic file (type pdf)
 <use cards-emental-physical.pdf, page 1>
 Package pdftex.def Info: cards-emental-physical.pdf , page1 used on input line 
-67.
+70.
 (pdftex.def)             Requested size: 615.04005pt x 475.25821pt.
 
 
 File: cards-emental-physical.pdf Graphic file (type pdf)
 <use cards-emental-physical.pdf, page 1>
 Package pdftex.def Info: cards-emental-physical.pdf , page1 used on input line 
-67.
+70.
 (pdftex.def)             Requested size: 615.04005pt x 475.25821pt.
 [14
 
@@ -329,30 +329,30 @@ Package pdftex.def Info: cards-emental-physical.pdf , page1 used on input line
 <cards-spiritual.pdf, id=90, 794.97pt x 614.295pt>
 File: cards-spiritual.pdf Graphic file (type pdf)
 <use cards-spiritual.pdf>
-Package pdftex.def Info: cards-spiritual.pdf  used on input line 68.
+Package pdftex.def Info: cards-spiritual.pdf  used on input line 71.
 (pdftex.def)             Requested size: 794.96806pt x 614.29349pt.
 <cards-spiritual.pdf, id=92, page=1, 794.97pt x 614.295pt>
 File: cards-spiritual.pdf Graphic file (type pdf)
 <use cards-spiritual.pdf, page 1>
-Package pdftex.def Info: cards-spiritual.pdf , page1 used on input line 68.
+Package pdftex.def Info: cards-spiritual.pdf , page1 used on input line 71.
 (pdftex.def)             Requested size: 794.96806pt x 614.29349pt.
 File: cards-spiritual.pdf Graphic file (type pdf)
 <use cards-spiritual.pdf, page 1>
-Package pdftex.def Info: cards-spiritual.pdf , page1 used on input line 68.
+Package pdftex.def Info: cards-spiritual.pdf , page1 used on input line 71.
 (pdftex.def)             Requested size: 615.04005pt x 475.25821pt.
 File: cards-spiritual.pdf Graphic file (type pdf)
 <use cards-spiritual.pdf, page 1>
-Package pdftex.def Info: cards-spiritual.pdf , page1 used on input line 68.
+Package pdftex.def Info: cards-spiritual.pdf , page1 used on input line 71.
 (pdftex.def)             Requested size: 615.04005pt x 475.25821pt.
 File: cards-spiritual.pdf Graphic file (type pdf)
 <use cards-spiritual.pdf, page 1>
-Package pdftex.def Info: cards-spiritual.pdf , page1 used on input line 68.
+Package pdftex.def Info: cards-spiritual.pdf , page1 used on input line 71.
 (pdftex.def)             Requested size: 615.04005pt x 475.25821pt.
 
 
 File: cards-spiritual.pdf Graphic file (type pdf)
 <use cards-spiritual.pdf, page 1>
-Package pdftex.def Info: cards-spiritual.pdf , page1 used on input line 68.
+Package pdftex.def Info: cards-spiritual.pdf , page1 used on input line 71.
 (pdftex.def)             Requested size: 615.04005pt x 475.25821pt.
 [15
 
@@ -384,33 +384,33 @@ Chapter 5.
 <four-story.pdf, id=368, 614.295pt x 794.97pt>
 File: four-story.pdf Graphic file (type pdf)
 <use four-story.pdf>
-Package pdftex.def Info: four-story.pdf  used on input line 121.
+Package pdftex.def Info: four-story.pdf  used on input line 124.
 (pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
 <four-story.pdf, id=370, page=1, 614.295pt x 794.97pt>
 File: four-story.pdf Graphic file (type pdf)
 <use four-story.pdf, page 1>
-Package pdftex.def Info: four-story.pdf , page1 used on input line 121.
+Package pdftex.def Info: four-story.pdf , page1 used on input line 124.
 (pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
 File: four-story.pdf Graphic file (type pdf)
 <use four-story.pdf, page 1>
-Package pdftex.def Info: four-story.pdf , page1 used on input line 121.
+Package pdftex.def Info: four-story.pdf , page1 used on input line 124.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 
 
 [26]
 File: four-story.pdf Graphic file (type pdf)
 <use four-story.pdf, page 1>
-Package pdftex.def Info: four-story.pdf , page1 used on input line 121.
+Package pdftex.def Info: four-story.pdf , page1 used on input line 124.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 File: four-story.pdf Graphic file (type pdf)
 <use four-story.pdf, page 1>
-Package pdftex.def Info: four-story.pdf , page1 used on input line 121.
+Package pdftex.def Info: four-story.pdf , page1 used on input line 124.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 
 
 File: four-story.pdf Graphic file (type pdf)
 <use four-story.pdf, page 1>
-Package pdftex.def Info: four-story.pdf , page1 used on input line 121.
+Package pdftex.def Info: four-story.pdf , page1 used on input line 124.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 [27
 
@@ -551,7 +551,7 @@ Chapter 14.
 
 
 [71]
-Overfull \hbox (4.72604pt too wide) in paragraph at lines 649--650
+Overfull \hbox (4.72604pt too wide) in paragraph at lines 652--653
 \OT1/cmr/m/n/12 PROGRESS OR VER-IFY ANY-THING HAV-ING TO DO WITH THE BORN
  []
 
@@ -596,7 +596,7 @@ Chapter 15.
 [88]
 Chapter 16.
 
-Overfull \hbox (9.13808pt too wide) in paragraph at lines 764--765
+Overfull \hbox (9.13808pt too wide) in paragraph at lines 767--768
 \OT1/cmr/m/n/12 can at-tain. It is my evo-lu-tion-ary right. I want to be-come 
 con-scious...generated
  []
@@ -627,7 +627,7 @@ L3 programming layer <2025-01-18>
  ) 
 Here is how much of TeX's memory you used:
  3219 strings out of 475178
- 51207 string characters out of 5766539
+ 51207 string characters out of 5766540
  454558 words of memory out of 5000000
  26197 multiletter control sequences out of 15000+600000
  563781 words of font info for 52 fonts, out of 8000000 for 9000
@@ -637,7 +637,7 @@ Here is how much of TeX's memory you used:
 00pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><
 /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/sh
 are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl12.pfb>
-Output written on chaps.pdf (91 pages, 1296651 bytes).
+Output written on chaps.pdf (91 pages, 1296729 bytes).
 PDF statistics:
  611 PDF objects out of 1000 (max. 8388607)
  394 compressed objects within 4 object streams

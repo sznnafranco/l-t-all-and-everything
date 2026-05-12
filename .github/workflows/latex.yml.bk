@@ -48,6 +48,17 @@ jobs:
         run: |
           latex2html -dir docs/${{ matrix.book }}_html -mkdir ${{ matrix.book }}.tex
 
+    outputs:
+      docs-path: docs
+
+  upload:
+    needs: build
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
@@ -55,7 +66,7 @@ jobs:
           path: docs
 
   deploy:
-    needs: build
+    needs: upload
     runs-on: ubuntu-latest
     permissions:
       pages: write

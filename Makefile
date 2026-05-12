@@ -12,6 +12,6 @@ html:
 	latex2html -no_math -html_version 4.0 -dir=output chaps.tex
 
 clean:
-	latexmk -C
-	rm -rf output
+	latexmk -c
+	rm -rf output/*
 	rm -f *.css *.pl

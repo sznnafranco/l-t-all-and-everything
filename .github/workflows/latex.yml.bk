@@ -1,58 +1,54 @@
-name: LaTeX Build and Publish
+name: Build Multiple LaTeX Books with Node.js 24
 
 on:
   push:
     branches:
-      - l-t-all-and-everything
-  pull_request:
-    branches:
-      - l-t-all-and-everything
+      - l-t-all-and-everything  # Change to your branch name if needed
+      # - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
-    permissions:
-      contents: write  # Explicitly allow push to repository
+    strategy:
+      matrix:
+        book:
+          - chaps
+          - book_template
+          # Add more books here
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-      - name: Install TeX Live and latex2html
+      - name: Set up Node.js 24
+        uses: actions/setup-node@v3
+        with:
+          node-version: '24'
+
+      - name: Verify Node.js version
+        run: node -v
+
+      # Optional: Run custom scripts per book using Node.js if needed
+      # - name: Run script for ${{ matrix.book }}
+      #   run: node scripts/build-${{ matrix.book }}.js
+
+      - name: Install LaTeX
         run: |
-          sudo apt-get update
-          sudo apt-get install -y texlive texlive-latex-extra texlive-fonts-recommended texlive-fonts-extra latex2html  # Install pdflatex and latex2html
+          sudo apt-get update -y
+          sudo apt-get install -y texlive-full
 
-      - name: Compile LaTeX to HTML using latex2html
+      - name: Compile LaTeX for ${{ matrix.book }}
         run: |
-          mkdir -p output
-          latex2html -dir=output chaps.tex  # This converts the LaTeX file to HTML
+          pdflatex -interaction=nonstopmode ${{ matrix.book }}.tex
+          pdflatex -interaction=nonstopmode ${{ matrix.book }}.tex
 
-      - name: Compile LaTeX to PDF using pdflatex
-        run: |
-          pdflatex chaps.tex
-          pdflatex chaps.tex  # Run twice to ensure TOC and references are correct
-          mv chaps.pdf output/chaps.pdf  # Move the generated PDF to the output folder
-
-      - name: Set up Git for gh-pages
-        run: |
-          git config --global user.name "GitHub Actions"
-          git config --global user.email "actions@github.com"
-
-      - name: Create gh-pages branch and push output
-        run: |
-          git checkout --orphan gh-pages
-          git rm -rf .
-          cp -r output/* .  # Copy HTML and PDF files to the root of gh-pages branch
-          git add .
-          git commit -m "Deploy HTML and PDF output"
-          git push --force --set-upstream origin gh-pages
-
-      - name: Publish HTML and PDF to GitHub Pages
+      - name: Upload PDF to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}  # Corrected input
-          publish_branch: gh-pages  # Corrected input
-          publish_dir: .  # Corrected input
-          disable_nojekyll: true  # Ensure `.nojekyll` is removed for proper processing
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./  # Adjust if PDFs are in a specific directory
+          # Optional: specify directory if PDFs are stored elsewhere
+          # publish_dir: ./output-${{ matrix.book }}

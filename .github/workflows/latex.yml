@@ -3,52 +3,47 @@ name: Build Multiple LaTeX Books with Node.js 24
 on:
   push:
     branches:
-      - l-t-all-and-everything  # Change to your branch name if needed
-      # - main
+      - l-t-all-and-everything
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
     strategy:
       matrix:
         book:
           - chaps
           - book_template
-          # Add more books here
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Set up Node.js 24
-        uses: actions/setup-node@v3
-        with:
-          node-version: '24'
-
-      - name: Verify Node.js version
-        run: node -v
-
-      # Optional: Run custom scripts per book using Node.js if needed
-      # - name: Run script for ${{ matrix.book }}
-      #   run: node scripts/build-${{ matrix.book }}.js
-
-      - name: Install LaTeX
+      - name: Install LaTeX and latex2html
         run: |
           sudo apt-get update -y
-          sudo apt-get install -y texlive-full
+          sudo apt-get install -y texlive-full latex2html
 
-      - name: Compile LaTeX for ${{ matrix.book }}
+      - name: Create docs directory
+        run: mkdir -p docs
+
+      - name: Copy manual HTML files to docs
         run: |
-          pdflatex -interaction=nonstopmode ${{ matrix.book }}.tex
-          pdflatex -interaction=nonstopmode ${{ matrix.book }}.tex
+          if [ -d "html" ]; then
+            cp -r html/* docs/
+          fi
 
-      - name: Upload PDF to GitHub Pages
+      - name: Compile LaTeX to PDF for ${{ matrix.book }}
+        run: |
+          pdflatex -interaction=nonstopmode -output-directory=docs ${{ matrix.book }}.tex
+          pdflatex -interaction=nonstopmode -output-directory=docs ${{ matrix.book }}.tex
+
+      - name: Convert LaTeX to HTML for ${{ matrix.book }}
+        run: |
+          latex2html -output_directory docs/${{ matrix.book }}_html ${{ matrix.book }}.tex
+
+      - name: Upload to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./  # Adjust if PDFs are in a specific directory
-          # Optional: specify directory if PDFs are stored elsewhere
-          # publish_dir: ./output-${{ matrix.book }}
+          publish_dir: ./docs

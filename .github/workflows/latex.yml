@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 60
     permissions:
-      contents: read
+      contents: write
       pages: write
       id-token: write
 
@@ -24,11 +24,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Install LaTeX and dependencies
+      - name: Install LaTeX and latex2html
         run: |
           sudo apt-get update -y
-          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y texlive-latex-base texlive-latex-extra texlive-fonts-recommended latex2html
-        timeout-minutes: 45
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends texlive-latex-base texlive-latex-extra texlive-fonts-recommended latex2html
+        timeout-minutes: 40
 
       - name: Create docs directory
         run: mkdir -p docs
@@ -48,8 +48,34 @@ jobs:
         run: |
           latex2html -dir docs/${{ matrix.book }}_html -mkdir ${{ matrix.book }}.tex
 
-      - name: Upload to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./docs
+          name: docs
+          path: docs
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: docs
+          path: docs
+
+      - name: Upload pages artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: docs
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2

@@ -42,7 +42,7 @@ jobs:
 
       - name: Convert LaTeX to HTML for ${{ matrix.book }}
         run: |
-          latex2html -output_directory docs/${{ matrix.book }}_html ${{ matrix.book }}.tex
+          latex2html -dir docs/${{ matrix.book }}_html -mkdir ${{ matrix.book }}.tex
 
       - name: Upload to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3

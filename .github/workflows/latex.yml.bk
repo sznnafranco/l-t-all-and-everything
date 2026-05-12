@@ -48,25 +48,8 @@ jobs:
         run: |
           latex2html -dir docs/${{ matrix.book }}_html -mkdir ${{ matrix.book }}.tex
 
-    outputs:
-      docs-path: docs
-
-  upload:
-    needs: build
-    runs-on: ubuntu-latest
-    
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Upload artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: docs
-          path: docs
-
   deploy:
-    needs: upload
+    needs: build
     runs-on: ubuntu-latest
     permissions:
       pages: write
@@ -76,11 +59,31 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
-      - name: Download artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: docs
-          path: docs
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install LaTeX and latex2html (for deploy job)
+        run: |
+          sudo apt-get update -y
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends texlive-latex-base texlive-latex-extra texlive-fonts-recommended latex2html
+        timeout-minutes: 40
+
+      - name: Create docs directory
+        run: mkdir -p docs
+
+      - name: Copy manual HTML files to docs
+        run: |
+          if [ -d "html" ]; then
+            cp -r html/* docs/
+          fi
+
+      - name: Compile LaTeX to PDF for all books
+        run: |
+          for book in chaps book_template; do
+            pdflatex -interaction=nonstopmode -output-directory=docs $book.tex
+            pdflatex -interaction=nonstopmode -output-directory=docs $book.tex
+            latex2html -dir docs/${book}_html -mkdir $book.tex
+          done
 
       - name: Upload pages artifact
         uses: actions/upload-pages-artifact@v3

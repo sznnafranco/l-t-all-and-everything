@@ -8,6 +8,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 60
 
     strategy:
       matrix:
@@ -22,7 +23,8 @@ jobs:
       - name: Install LaTeX and latex2html
         run: |
           sudo apt-get update -y
-          sudo apt-get install -y texlive-full latex2html
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y texlive-full latex2html
+        timeout-minutes: 45
 
       - name: Create docs directory
         run: mkdir -p docs

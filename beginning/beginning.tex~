@@ -1,0 +1,77 @@
+\documentclass[12pt,letterpaper]{book}
+\usepackage{pdfpages}
+\usepackage{comment}
+\usepackage{html}
+
+%\newenvironment{latexonly}{}{}
+%\excludecomment{htmlonly}
+
+\begin{document}
+\includepdf[pages=1]{games.pdf}
+
+\copyright\ 2025-2026 As yet unnamed and unformed charitable organization to mitigate and stop hunger and malnutrition, and other cool things. All rights reserved.
+
+\begin{comment}
+Here is a small addition to make sure this gets published on github.
+rrrrrrrrrrrrrrrrrrrr
+\end{comment}
+
+\begin{htmlonly}
+  Here is an html only portion!!!
+\end{htmlonly}
+
+\tableofcontents
+
+
+\includepdf[pages=1]{three-story.pdf}
+\includepdf[pages=1]{cards-emental-physical.pdf}
+\includepdf[pages=1]{cards-spiritual.pdf}
+\includepdf[pages=1]{four-story.pdf}
+
+%\begin{htmlonly}
+  \begin{rawhtml}
+
+  <h1>Interactive PDF Viewers</h1>
+
+<h2>Games</h2>
+<object data="games.pdf" type="application/pdf" width="100%" height="600px">
+  <p>Your browser does not support PDF viewing. <a href="games.pdf">Download PDF</a></p>
+</object>
+
+<h2>Three Story</h2>
+<object data="three-story.pdf" type="application/pdf" width="100%" height="600px">
+  <p>Your browser does not support PDF viewing. <a href="three-story.pdf">Download PDF</a></p>
+</object>
+
+<h2>Cards - Elemental & Physical</h2>
+<object data="cards-emental-physical.pdf" type="application/pdf" width="100%" height="600px">
+  <p>Your browser does not support PDF viewing. <a href="cards-emental-physical.pdf">Download PDF</a></p>
+</object>
+
+<h2>Cards - Spiritual</h2>
+<object data="cards-spiritual.pdf" type="application/pdf" width="100%" height="600px">
+  <p>Your browser does not support PDF viewing. <a href="cards-spiritual.pdf">Download PDF</a></p>
+</object>
+
+<h2>Four Story</h2>
+<object data="four-story.pdf" type="application/pdf" width="100%" height="600px">
+  <p>Your browser does not support PDF viewing. <a href="four-story.pdf">Download PDF</a></p>
+  </object>
+
+\end{rawhtml}
+  
+%<object data="games.pdf" type="application/pdf" width="100%" height="120%">
+%</object>
+%<object data="three-story.pdf" type="application/pdf" width="100%" height="120%">
+%</object>
+%<object data="cards-emental-physical.pdf" type="application/pdf" width="100%" height="120%">
+%</object>
+%<object data="cards-spiritual.pdf" type="application/pdf" width="100%" height="120%">
+%</object>
+%<object data="four-story.pdf" type="application/pdf" width="100%" height="120%">
+%</object>
+
+%\end{htmlonly}
+
+
+\end{document}

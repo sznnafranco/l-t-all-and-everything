@@ -1,12 +1,12 @@
 # Fdb version 4
-["pdflatex"] 1780997636.03993 "beginning.tex" "beginning.pdf" "beginning" 1780997638.21387 0
+["pdflatex"] 1795519418.72006 "beginning.tex" "beginning.pdf" "beginning" 1795519421.61842 0
   "../cards-emental-physical.pdf" 1777825180.71604 467429 52b34f4f1dd9fcecf7a840690c536d47 ""
   "../cards-spiritual.pdf" 1777825180.71604 608341 7ac15ade9972ba59ce8e516ccb585d32 ""
   "../four-story.pdf" 1777825180.71604 6535 70c4da2bead3e9d6f3e4932cc6c90f61 ""
   "../games.pdf" 1777825180.71604 5069 45dab94bc05df94eb0131eea8e772433 ""
   "../three-story.pdf" 1777825180.72004 10503 804d3898fb2d1f50f37f7466ea021266 ""
-  "/etc/texmf/web2c/texmf.cnf" 1780993364.2 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/amnesia/.texlive2025/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1200.600pk" 1780997125.82001 14040 b2cb26d8ecb09d28b09b07ccfedad1a5 ""
+  "/etc/texmf/web2c/texmf.cnf" 1795517445.772 475 c0e671620eb5563b2130f56340a5fde8 ""
+  "/home/amnesia/.texlive2025/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1200.600pk" 1795519418.66 14040 d4500d212ea046a5b58b4674d485aadb ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/tcrm1200.tfm" 1136768653 1536 74b7293ec3713bb7fdca8dd1bd1f469c ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm" 1136768653 1324 c910af8c371558dc20f2d7822f66fe64 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmr12.tfm" 1136768653 1288 655e228510b4c2a1abe905c368440826 ""
@@ -70,12 +70,12 @@
   "/usr/share/texlive/texmf-dist/web2c/texmf.cnf" 1741904018 41538 c016915c1d51223b6dbbfe27341748a8 ""
   "/usr/share/texmf/tex/latex/html/html.sty" 1740755737 42021 60bc1fb7a105d8a3826175949aed6b4f ""
   "/usr/share/texmf/web2c/texmf.cnf" 1741904018 41538 c016915c1d51223b6dbbfe27341748a8 ""
-  "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1780993373 37123 e96a8f56fceba09e5a39a8d32fe4b081 ""
-  "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1780993404 1928197 e666cfc3523934a012021096d67a324e ""
-  "beginning.aux" 1780997638.18401 162 1048d5a6ab834159417e60c8f895d4f4 "pdflatex"
-  "beginning.out" 1780997638.10801 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1795517451 37123 e96a8f56fceba09e5a39a8d32fe4b081 ""
+  "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1795517456 1928198 b50715fa1ad73184c61e093e1c5e2955 ""
+  "beginning.aux" 1795519421.584 162 1048d5a6ab834159417e60c8f895d4f4 "pdflatex"
+  "beginning.out" 1795519421.5 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
   "beginning.tex" 1780997054.63601 2451 48b9679aa9bc0fa005a81db380f7c228 ""
-  "beginning.toc" 1780997638.12401 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "beginning.toc" 1795519421.516 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
   (generated)
   "beginning.aux"
   "beginning.log"

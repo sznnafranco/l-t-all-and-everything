@@ -1,0 +1,4 @@
+#!/usr/bin/bash
+
+mkdir -p output
+latex2html -no_math -html_version 4.0 -dir=output htmll.tex

@@ -1,0 +1,11 @@
+#!/usr/bin/bash
+
+name="$1"
+
+echo "Building: $name"
+
+cd /home/amnesia/Persistent/qaae-new
+
+rm -rf output/*
+latex2html -no_math -html_version 4.0 -dir=output "${name}.tex"
+echo "Done: output/"

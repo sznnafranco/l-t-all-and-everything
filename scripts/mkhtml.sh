@@ -1,0 +1,14 @@
+#!/usr/bin/bash
+
+name="$1"
+mkdir -p $name
+echo "Building: $name"
+#exit
+cp ../games.pdf $name
+cp ../three-story.pdf $name
+cp ../cards-emental-physical.pdf $name
+cp ../cards-spiritual.pdf $name
+cp ../games.pdf $name
+
+latex2html -no_math -html_version 4.0 -dir=$name "${name}.tex"
+#echo "Done: output/"
